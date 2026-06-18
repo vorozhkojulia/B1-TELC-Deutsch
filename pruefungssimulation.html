@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prüfungssimulation — Telc Deutsch B1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Playfair+Display:wght@400;700&family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#faf9f6;
+  --cream-2:#f2ede4;
+  --cream-3:#e8e0d3;
+  --amber:#c2750a;
+  --amber-2:#d97706;
+  --amber-light:#fbbf24;
+  --text:#1c1917;
+  --text-muted:#78716c;
+  --border:rgba(0,0,0,0.09);
+  --font-d:'DM Serif Display',serif;
+  --font-b:'Syne',sans-serif;
+  --font-m:'IBM Plex Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--text);font-family:var(--font-b);overflow-x:hidden}
+
+/* ── LANGUAGE ── */
+[data-lang="de"] .ua{display:none!important}
+[data-lang="ua"] .de{display:none!important}
+[data-lang="ua"] nav a .de{display:block!important;visibility:hidden;}
+[data-lang="de"] nav a .ua{display:block!important;visibility:hidden;}
+
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1.4rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all .4s ease;
+  background:rgba(28,25,23,.35);
+  backdrop-filter:blur(16px) saturate(1.2);
+  -webkit-backdrop-filter:blur(16px) saturate(1.2);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+header.scrolled{
+  background:rgba(250,249,246,.6);
+  backdrop-filter:blur(20px) saturate(1.4);
+  -webkit-backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 16px rgba(0,0,0,.06);
+}
+.logo{font-family:var(--font-d);font-size:1.8rem;color:#fff;letter-spacing:-.02em;text-decoration:none;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.logo span{color:var(--amber-light)}
+header.scrolled .logo{color:var(--text);text-shadow:none}
+header.scrolled .logo span{color:var(--amber-2)}
+nav{display:flex;align-items:center;gap:2.5rem}
+nav a{
+  color:rgba(255,255,255,.9);text-decoration:none;
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  transition:color .2s;white-space:nowrap;
+  text-shadow:0 1px 8px rgba(0,0,0,.6);
+  display:inline-grid;justify-items:center;
+}
+nav a .de, nav a .ua{grid-area:1/1;}
+nav a:hover{color:var(--amber-light)}
+nav a.current{color:var(--amber-light)}
+header.scrolled nav a{color:var(--text-muted);text-shadow:none}
+header.scrolled nav a:hover{color:var(--amber-2)}
+header.scrolled nav a.current{color:var(--amber-2)}
+.lang-sw{display:flex;gap:.25rem;margin-left:1.5rem}
+.lang-btn{
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.5);color:#fff;
+  font-family:var(--font-m);font-size:.68rem;font-weight:600;letter-spacing:.12em;
+  padding:.3rem .65rem;cursor:pointer;transition:all .2s;border-radius:2px;
+  text-shadow:0 1px 6px rgba(0,0,0,.5);
+}
+.lang-btn.active{background:var(--amber-light);border-color:var(--amber-light);color:#1c1917;font-weight:700;text-shadow:none}
+.lang-btn:hover:not(.active){border-color:var(--amber-light);color:var(--amber-light)}
+header.scrolled .lang-btn{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.2);color:var(--text-muted);text-shadow:none}
+header.scrolled .lang-btn.active{background:var(--amber-2);border-color:var(--amber-2);color:#fff}
+header.scrolled .lang-btn:hover:not(.active){border-color:var(--amber-2);color:var(--amber-2)}
+
+/* ════════════════════════════════════
+   HERO BANNER
+════════════════════════════════════ */
+.pb-section{
+  width:100%;
+  background:url('immages/desk-notebook-pen.jpg') center 45%/cover no-repeat;
+  padding:7rem 0 0;
+  position:relative;overflow:hidden;
+}
+.pb-section::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(
+    160deg,
+    rgba(28,25,23,.35) 0%,
+    rgba(28,25,23,.55) 45%,
+    rgba(28,25,23,.82) 100%
+  );
+  pointer-events:none;
+}
+.pb-inner{
+  max-width:1180px;margin:0 auto;padding:0 4rem;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:end;
+  position:relative;z-index:1;
+}
+
+/* ── LEFT: stacked image animation ── */
+.pb-visual{display:flex;justify-content:center;align-items:flex-end;}
+
+.pb-stack{
+  position:relative;
+  width:420px;height:520px;
+  flex-shrink:0;
+}
+
+/* Certificate — back layer, rotated, darkened */
+.pb-img-cert{
+  position:absolute;
+  right:-10px;bottom:40px;
+  width:280px;
+  border-radius:6px;
+  box-shadow:0 24px 60px rgba(0,0,0,.7),0 0 0 1px rgba(194,117,10,.15);
+  transform:rotate(5deg) translate(10px,10px);
+  filter:brightness(.45);
+  opacity:0;
+  animation:certSlideIn 1.3s .2s ease-out forwards;
+}
+@keyframes certSlideIn{
+  from{opacity:0;transform:rotate(5deg) translate(40px,24px);}
+  to{opacity:1;transform:rotate(5deg) translate(10px,10px);}
+}
+
+/* Man — front layer, slide up from below */
+.pb-img-man{
+  position:absolute;
+  left:-40px;bottom:0;
+  width:440px;
+  opacity:0;
+  transform:translateY(60px);
+  animation:manSlideUp 1s .5s cubic-bezier(.22,.61,.36,1) forwards;
+}
+@keyframes manSlideUp{
+  from{opacity:0;transform:translateY(60px);}
+  to{opacity:1;transform:translateY(0);}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(8px);}
+  to{opacity:1;transform:none;}
+}
+
+/* ── RIGHT: text ── */
+.pb-text{display:flex;flex-direction:column;gap:1.8rem;align-self:center;padding-bottom:4rem;}
+
+.pb-title{
+  font-family:var(--font-d);
+  font-size:clamp(1.7rem,2.8vw,2.5rem);
+  color:#fff;line-height:1.12;letter-spacing:-.025em;
+  text-shadow:0 2px 20px rgba(0,0,0,.4);
+}
+.pb-title .ua{font-family:'Playfair Display',serif;font-weight:700;}
+
+.pb-desc{
+  color:rgba(255,255,255,.75);font-size:.93rem;line-height:1.82;
+}
+
+.pb-list{list-style:none;display:flex;flex-direction:column;gap:.85rem;}
+.pb-list li{
+  display:flex;align-items:center;gap:.85rem;
+  font-family:var(--font-b);font-size:.88rem;color:rgba(255,255,255,.9);
+}
+.pb-check{
+  flex-shrink:0;width:22px;height:22px;border-radius:50%;
+  background:var(--amber-2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;color:#fff;font-weight:700;
+}
+
+/* ── CTA button (скопійовано з index.html) ── */
+.cta-wrap{
+  display:inline-block;position:relative;
+  margin:1rem 0;
+  align-self:flex-start;
+}
+.cta-wrap::before,.cta-wrap::after{
+  content:'';position:absolute;
+  inset:-8px;border-radius:10px;
+  border:2px solid var(--amber-light);
+  opacity:0;
+  animation:btnPulse 2.6s ease-out 1.8s infinite;
+  pointer-events:none;
+}
+.cta-wrap::after{
+  inset:-18px;border-radius:14px;
+  animation-delay:2.5s;
+}
+@keyframes btnPulse{
+  0%{opacity:.5;transform:scale(1);}
+  100%{opacity:0;transform:scale(1.15);}
+}
+.cta-btn{
+  display:inline-flex;align-items:center;overflow:hidden;position:relative;
+  background:#fff;color:var(--text);
+  border:none;border-radius:6px;
+  font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  padding:.85rem 2rem .85rem 3.6rem;cursor:pointer;text-decoration:none;
+  transition:color .3s ease;
+  box-shadow:0 4px 24px rgba(0,0,0,.2);
+  white-space:nowrap;
+}
+.cta-btn::before{
+  content:'';position:absolute;left:0;top:0;
+  width:2.8rem;height:100%;
+  background:var(--amber-2);
+  transition:width .3s ease;z-index:0;
+}
+.cta-btn::after{
+  content:'→';position:absolute;left:0;
+  width:2.8rem;text-align:center;
+  color:#fff;font-size:1.1rem;line-height:1;
+  z-index:2;transition:left .3s ease;
+}
+.cta-btn span{position:relative;z-index:1;transition:transform .3s ease;}
+.cta-btn:hover::before{width:100%;}
+.cta-btn:hover{color:#fff;}
+.cta-btn:hover::after{left:calc(100% - 2.8rem);}
+.cta-btn:hover span{transform:translateX(-1.2rem);}
+
+/* ── Tags — all golden ── */
+.pb-tags{display:flex;gap:.5rem;flex-wrap:wrap;padding-top:.4rem;}
+.pb-tag{
+  background:rgba(194,117,10,.2);
+  border:1px solid rgba(251,191,36,.35);
+  font-family:var(--font-m);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--amber-light);padding:.22rem .6rem;border-radius:3px;
+}
+.pb-tag--free{
+  background:rgba(194,117,10,.35);border-color:rgba(251,191,36,.55);
+  font-weight:700;
+}
+
+/* ════════════════════════════════════
+   ACCORDION SECTION
+════════════════════════════════════ */
+.page-section{padding:5rem 0;border-top:1px solid var(--border);}
+.ctr{max-width:1180px;margin:0 auto;padding:0 3rem;}
+.sec-title{
+  font-family:var(--font-d);
+  font-size:clamp(1.7rem,2.8vw,2.4rem);
+  letter-spacing:-.02em;line-height:1.15;margin-bottom:3rem;
+  color:var(--text);
+}
+.sec-title .ua{font-family:'Playfair Display',serif;font-weight:700;}
+
+.accordion{display:flex;flex-direction:column;width:100%;}
+.acc-item{
+  border-bottom:1px solid var(--cream-3);
+  position:relative;
+}
+.acc-item:first-child{border-top:1px solid var(--cream-3);}
+.acc-btn{
+  width:100%;display:flex;align-items:center;gap:1.2rem;
+  padding:1.5rem 0;
+  background:none;border:none;cursor:pointer;text-align:left;
+  transition:background .2s;
+}
+.acc-btn:hover .acc-title{color:var(--amber-2);}
+.acc-icon-wrap{
+  font-size:1.3rem;flex-shrink:0;width:2.2rem;text-align:center;
+}
+.acc-title{
+  font-family:var(--font-b);font-size:1rem;font-weight:700;
+  color:var(--text);letter-spacing:.01em;flex:1;
+  transition:color .2s;
+}
+.acc-title .ua{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;}
+/* Circle toggle button */
+.acc-arrow{
+  flex-shrink:0;margin-left:auto;
+  width:2.4rem;height:2.4rem;border-radius:50%;
+  background:var(--cream-2);border:1px solid var(--cream-3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:var(--amber-2);font-weight:300;line-height:1;
+  transition:transform .35s ease, background .2s, border-color .2s;
+  flex-shrink:0;
+}
+.acc-btn:hover .acc-arrow{background:var(--amber-2);border-color:var(--amber-2);color:#fff;}
+.acc-item.open .acc-arrow{
+  transform:rotate(45deg);
+  background:var(--amber-2);border-color:var(--amber-2);color:#fff;
+}
+.acc-body{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s cubic-bezier(.22,.61,.36,1);
+}
+.acc-item.open .acc-body{max-height:300px;}
+.acc-inner{
+  padding:.2rem 0 1.8rem 3.4rem;
+  font-family:var(--font-b);font-size:.88rem;color:var(--text-muted);line-height:1.75;
+}
+
+/* ── STEPS SECTION ── */
+.steps-grid{display:flex;flex-direction:column;}
+.step-row{
+  display:grid;grid-template-columns:4rem 1fr;gap:1.5rem;
+  align-items:start;padding:2rem 0;
+  border-bottom:1px solid var(--cream-3);
+}
+.step-row:last-child{border-bottom:none;}
+.step-num{font-family:var(--font-d);font-size:2.2rem;color:var(--amber-2);line-height:1;padding-top:.1rem;}
+.step-title{font-family:var(--font-b);font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+.step-title .ua{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;}
+.step-desc{font-family:var(--font-b);font-size:.82rem;color:var(--text-muted);line-height:1.68;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--text);color:rgba(255,255,255,.5);
+  font-family:var(--font-m);font-size:.72rem;letter-spacing:.06em;
+  text-align:center;padding:2rem 3rem;
+}
+footer a{color:var(--amber-light);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+
+/* ── SCROLL ANIMATIONS ── */
+.anim{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+.anim.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<!-- ════ HEADER ════ -->
+<header>
+  <a class="logo" href="index.html">B1 D<span>Ex</span></a>
+  <nav>
+    <a href="index.html">
+      <span class="de">Startseite</span><span class="ua">Головна</span>
+    </a>
+    <a href="uebungen.html">
+      <span class="de">Übungen</span><span class="ua">Вправи</span>
+    </a>
+    <a href="pruefungsstruktur.html">
+      <span class="de">Prüfungsstruktur</span><span class="ua">Структура екзамену</span>
+    </a>
+    <a href="wichtige-tipps.html">
+      <span class="de">Wichtige Tipps</span><span class="ua">Важливі поради</span>
+    </a>
+    <a href="pruefungssimulation.html" class="current">
+      <span class="de">Prüfungssimulation</span><span class="ua">Симуляція</span>
+    </a>
+    <div class="lang-sw">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-ua" onclick="setLang('ua')">UA</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ════ HERO BANNER ════ -->
+<section class="pb-section">
+  <div class="pb-inner">
+
+    <!-- LEFT: stacked images -->
+    <div class="pb-visual">
+      <div class="pb-stack">
+        <img src="immages/Zertificat.png" alt="Telc B1 Zertifikat" class="pb-img-cert">
+        <img src="immages/men.png" alt="Erfolgreicher Prüfling" class="pb-img-man">
+      </div>
+    </div>
+
+    <!-- RIGHT: text -->
+    <div class="pb-text">
+      <div class="pb-title">
+        <span class="de">Kostenloser Übungstest für Telc Deutsch B1</span>
+        <span class="ua">Безкоштовний пробний тест Telc Deutsch B1</span>
+      </div>
+      <p class="pb-desc">
+        <span class="de">Der offizielle Modelltest von telc spiegelt die reale Prüfungssituation vollständig wider — inklusive aller Aufgabenformate, Audiodateien und Lösungsschlüssel.</span>
+        <span class="ua">Офіційний зразковий тест telc повністю відображає реальну ситуацію іспиту — включаючи всі формати завдань, аудіофайли та ключ відповідей.</span>
+      </p>
+      <ul class="pb-list">
+        <li>
+          <span class="pb-check">✓</span>
+          <span class="de">Schriftlicher Teil inkl. Hören</span>
+          <span class="ua">Письмова частина + аудіювання</span>
+        </li>
+        <li>
+          <span class="pb-check">✓</span>
+          <span class="de">Mündlicher Teil</span>
+          <span class="ua">Усна частина</span>
+        </li>
+        <li>
+          <span class="pb-check">✓</span>
+          <span class="de">Lösungsschlüssel</span>
+          <span class="ua">Ключ відповідей</span>
+        </li>
+      </ul>
+      <div class="cta-wrap">
+        <a href="https://www.telc.net/fileadmin/user_upload/mock_exams/Deutsch/telc_deutsch_b1.zip"
+           class="cta-btn" download>
+          <span class="de">Übungstest herunterladen</span>
+          <span class="ua">Завантажити тест</span>
+        </a>
+      </div>
+      <div class="pb-tags">
+        <span class="pb-tag">PDF</span>
+        <span class="pb-tag">MP3</span>
+        <span class="pb-tag">ZIP</span>
+        <span class="pb-tag">Telc Official</span>
+        <span class="pb-tag pb-tag--free">
+          <span class="de">Kostenlos</span><span class="ua">Безкоштовно</span>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════ WAS IST ENTHALTEN — ACCORDION ════ -->
+<section class="page-section">
+  <div class="ctr">
+    <h2 class="sec-title anim">
+      <span class="de">Was ist im Paket enthalten?</span>
+      <span class="ua">Що входить до пакету?</span>
+    </h2>
+    <div class="accordion">
+
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-icon-wrap">📄</span>
+          <span class="acc-title">
+            <span class="de">Schriftlicher Prüfungsbogen</span>
+            <span class="ua">Письмовий бланк іспиту</span>
+          </span>
+          <span class="acc-arrow">+</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <span class="de">Alle Aufgaben zu Lesen, Sprachbausteine, Schreiben und Hören — im Originalformat von telc. Der Bogen entspricht exakt der echten Prüfung in Struktur und Schwierigkeitsgrad.</span>
+            <span class="ua">Усі завдання з читання, мовних структур, письма та аудіювання у оригінальному форматі telc. Бланк точно відповідає реальному іспиту за структурою та рівнем складності.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-icon-wrap">🎧</span>
+          <span class="acc-title">
+            <span class="de">Audiodateien (MP3)</span>
+            <span class="ua">Аудіофайли (MP3)</span>
+          </span>
+          <span class="acc-arrow">+</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <span class="de">Originalaufnahmen für den Hörteil — in der gleichen Qualität und mit denselben Sprechern wie in der echten Prüfung. Einfach abspielen und mitschreiben.</span>
+            <span class="ua">Оригінальні записи для розділу аудіювання — такої ж якості та з тими ж дикторами, що й на реальному іспиті. Просто відтворіть і записуйте відповіді.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-icon-wrap">🗣️</span>
+          <span class="acc-title">
+            <span class="de">Mündlicher Prüfungsteil</span>
+            <span class="ua">Усна частина іспиту</span>
+          </span>
+          <span class="acc-arrow">+</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <span class="de">Aufgabenstellung und Materialien für das Prüfungsgespräch mit drei Teilen: Vorstellen, Gemeinsam planen und Präsentieren. Ideal zum Üben zu zweit.</span>
+            <span class="ua">Завдання та матеріали для іспитової бесіди з трьома частинами: презентація, спільне планування та доповідь. Ідеально для практики вдвох.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn" onclick="toggleAcc(this)">
+          <span class="acc-icon-wrap">✅</span>
+          <span class="acc-title">
+            <span class="de">Lösungsschlüssel</span>
+            <span class="ua">Ключ відповідей</span>
+          </span>
+          <span class="acc-arrow">+</span>
+        </button>
+        <div class="acc-body">
+          <div class="acc-inner">
+            <span class="de">Vollständige Musterlösungen für alle Aufgaben sowie Bewertungsrichtlinien für den Schreibteil. So können Sie Ihre Ergebnisse selbst auswerten und Schwachstellen gezielt erkennen.</span>
+            <span class="ua">Повні зразкові відповіді на всі завдання та критерії оцінювання для письмової частини. Ви можете самостійно оцінити результати та визначити слабкі місця.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <span class="de">© 2025 B1 DEx · Kein offizielles telc-Produkt ·
+    Quellennachweis: <a href="https://www.telc.net" target="_blank">telc.net</a>
+  </span>
+  <span class="ua">© 2025 B1 DEx · Не є офіційним продуктом telc ·
+    Джерело: <a href="https://www.telc.net" target="_blank">telc.net</a>
+  </span>
+</footer>
+
+<script>
+function setLang(l){
+  document.documentElement.setAttribute('data-lang',l);
+  document.getElementById('btn-de').classList.toggle('active',l==='de');
+  document.getElementById('btn-ua').classList.toggle('active',l==='ua');
+  localStorage.setItem('lang',l);
+}
+(function(){
+  const saved=localStorage.getItem('lang');
+  if(saved&&saved!=='de') setLang(saved);
+})();
+
+// Header: frosted dark over the hero, cream when scrolled onto content
+(function(){
+  const hdr = document.querySelector('header');
+  window.addEventListener('scroll', ()=>{ hdr.classList.toggle('scrolled', window.scrollY > 60); });
+})();
+
+// Scroll-triggered animations
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.anim').forEach(el=>observer.observe(el));
+
+// Accordion
+function toggleAcc(btn){
+  const item = btn.closest('.acc-item');
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.acc-item.open').forEach(el=>el.classList.remove('open'));
+  if(!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>

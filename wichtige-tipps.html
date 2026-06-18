@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="de" data-lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wichtige Tipps — Telc Deutsch B1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Playfair+Display:wght@400;700&family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#faf9f6;
+  --cream-2:#f2ede4;
+  --cream-3:#e8e0d3;
+  --amber:#c2750a;
+  --amber-2:#d97706;
+  --amber-light:#fbbf24;
+  --amber-glow:rgba(194,117,10,0.25);
+  --text:#1c1917;
+  --text-muted:#78716c;
+  --border:rgba(0,0,0,0.09);
+  --font-d:'DM Serif Display',serif;
+  --font-b:'Syne',sans-serif;
+  --font-m:'IBM Plex Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--text);font-family:var(--font-b);overflow-x:hidden}
+
+/* ── HEADER ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1.4rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all .4s ease;
+  background:rgba(28,25,23,.35);
+  backdrop-filter:blur(16px) saturate(1.2);
+  -webkit-backdrop-filter:blur(16px) saturate(1.2);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+header.scrolled{
+  background:rgba(250,249,246,.6);
+  backdrop-filter:blur(20px) saturate(1.4);
+  -webkit-backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid var(--border);
+  padding:.9rem 3rem;
+  box-shadow:0 2px 16px rgba(0,0,0,.06);
+}
+.logo{font-family:var(--font-d);font-size:1.8rem;color:#fff;letter-spacing:-.02em;text-decoration:none;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.logo span{color:var(--amber-light)}
+header.scrolled .logo{color:var(--text);text-shadow:none}
+header.scrolled .logo span{color:var(--amber-2)}
+nav{display:flex;align-items:center;gap:2.5rem}
+nav a{
+  color:rgba(255,255,255,.9);text-decoration:none;
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  transition:color .2s;white-space:nowrap;
+  text-shadow:0 1px 8px rgba(0,0,0,.6);
+  display:inline-grid;justify-items:center;
+}
+nav a .de, nav a .ua{grid-area:1/1;}
+[data-lang="ua"] nav a .de{display:block!important;visibility:hidden;}
+[data-lang="de"] nav a .ua{display:block!important;visibility:hidden;}
+nav a:hover{color:var(--amber-light)}
+nav a.current{color:var(--amber-light)}
+header.scrolled nav a{color:var(--text-muted);text-shadow:none}
+header.scrolled nav a:hover{color:var(--amber-2)}
+header.scrolled nav a.current{color:var(--amber-2)}
+.lang-sw{display:flex;gap:.25rem;margin-left:1.5rem}
+.lang-btn{
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.5);color:#fff;
+  font-family:var(--font-m);font-size:.68rem;font-weight:600;letter-spacing:.12em;
+  padding:.3rem .65rem;cursor:pointer;transition:all .2s;border-radius:2px;
+  text-shadow:0 1px 6px rgba(0,0,0,.5);
+}
+.lang-btn.active{background:var(--amber-light);border-color:var(--amber-light);color:#1c1917;font-weight:700;text-shadow:none}
+.lang-btn:hover:not(.active){border-color:var(--amber-light);color:var(--amber-light)}
+header.scrolled .lang-btn{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.2);color:var(--text-muted);text-shadow:none}
+header.scrolled .lang-btn.active{background:var(--amber-2);border-color:var(--amber-2);color:#fff}
+header.scrolled .lang-btn:hover:not(.active){border-color:var(--amber-2);color:var(--amber-2)}
+
+/* ── BANNER HERO ── */
+.banner{
+  position:fixed;top:0;left:0;width:100%;height:max(33vh,300px);
+  z-index:0;overflow:hidden;
+}
+.banner-bg{
+  position:absolute;left:0;right:0;top:-45%;bottom:0;
+  background:url('immages/bloknot.jpg') center 30%/cover no-repeat;
+  transform:scale(1.06);
+  will-change:transform;
+  filter:brightness(.92) saturate(1.05);
+}
+.banner-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    160deg,
+    rgba(28,25,23,.3) 0%,
+    rgba(28,25,23,.52) 40%,
+    rgba(28,25,23,.72) 75%,
+    rgba(28,25,23,.88) 100%
+  );
+}
+.banner-content{
+  position:absolute;inset:0;z-index:10;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:4.2rem 3rem 1rem;text-align:center;
+}
+.banner-headline{
+  font-family:var(--font-d);
+  font-size:clamp(1.5rem,2.8vw,2.4rem);
+  color:#fff;line-height:1.15;letter-spacing:-.02em;
+  max-width:880px;margin-bottom:.7rem;
+  text-shadow:0 2px 24px rgba(0,0,0,.45);
+  animation:fadeUp .8s .2s both;
+}
+.banner-headline .ua{font-family:'Playfair Display',serif;font-weight:700}
+.banner-sub{
+  color:rgba(255,255,255,.9);font-size:.9rem;line-height:1.65;
+  max-width:620px;text-shadow:0 1px 10px rgba(0,0,0,.5);
+  animation:fadeUp .8s .45s both;
+}
+
+/* ── MAIN ── */
+.main{position:relative;z-index:10;margin-top:max(33vh,300px);background:var(--cream)}
+
+/* ── TIPS LAYOUT ── */
+.tips-wrap{max-width:1180px;margin:0 auto;padding:4.5rem 3rem 6rem;scroll-margin-top:5rem}
+.tips-layout{
+  display:grid;grid-template-columns:330px 1fr;gap:3rem;align-items:start;
+}
+
+/* ── TAB LIST (left) ── */
+.ttabs{
+  position:sticky;top:6.5rem;
+  display:flex;flex-direction:column;
+  border-top:1px solid var(--cream-3);
+}
+.ttab{
+  display:flex;align-items:center;gap:1rem;
+  background:transparent;border:none;border-bottom:1px solid var(--cream-3);
+  padding:1.15rem .9rem;cursor:pointer;text-align:left;
+  position:relative;overflow:hidden;
+  transition:background .25s ease,padding-left .25s ease;
+  font-family:var(--font-b);
+}
+.ttab::before{
+  content:'';position:absolute;left:0;top:0;width:3px;height:100%;
+  background:var(--amber-2);
+  transform:scaleY(0);transform-origin:bottom;
+  transition:transform .3s ease;
+}
+.ttab:hover,.ttab.active{background:#fff;padding-left:1.25rem}
+.ttab:hover::before,.ttab.active::before{transform:scaleY(1)}
+.ttab-num{
+  font-family:var(--font-m);font-size:.62rem;font-weight:700;
+  letter-spacing:.12em;color:var(--amber);flex-shrink:0;
+  position:relative;width:1.6rem;text-align:center;
+}
+.ttab.active .ttab-num::after{
+  content:'';position:absolute;inset:-7px -5px;
+  border:1.5px solid var(--amber-light);border-radius:50%;
+  animation:ringPulse 2.4s ease-in-out infinite;
+}
+.ttab-main{display:flex;flex-direction:column;gap:.15rem;min-width:0}
+.ttab-name{font-family:var(--font-d);font-size:1.08rem;color:var(--text);line-height:1.2;transition:color .25s}
+[data-lang="ua"] .ttab-name{font-family:'Playfair Display',serif;font-weight:700;font-size:.98rem}
+.ttab-sub{font-size:.68rem;color:var(--text-muted);letter-spacing:.03em}
+.ttab:hover .ttab-name,.ttab.active .ttab-name{color:var(--amber-2)}
+.ttab-arrow{
+  margin-left:auto;color:var(--amber-2);font-size:1rem;
+  opacity:0;transform:translateX(-8px);
+  transition:opacity .25s ease,transform .25s ease;flex-shrink:0;
+}
+.ttab:hover .ttab-arrow,.ttab.active .ttab-arrow{opacity:1;transform:translateX(0)}
+
+/* ── PANELS (right) ── */
+.tpanels{min-width:0}
+.tpanel{display:none}
+.tpanel.active{display:block}
+.tpanel.active .stag{opacity:0;animation:fadeUp .55s ease forwards}
+
+/* panel header */
+.tp-head{display:flex;align-items:center;gap:1.1rem;margin-bottom:1.4rem}
+.tp-icon{
+  font-size:2.3rem;line-height:1;
+  animation:floatIcon 3.2s ease-in-out infinite;
+}
+.tp-title{font-family:var(--font-d);font-size:clamp(1.5rem,2.4vw,2rem);letter-spacing:-.02em;color:var(--text);line-height:1.15}
+.tp-title .ua{font-family:'Playfair Display',serif;font-weight:700}
+.tp-meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.45rem}
+.tp-chip{
+  display:inline-flex;align-items:center;gap:.35rem;
+  font-family:var(--font-m);font-size:.66rem;font-weight:600;letter-spacing:.05em;
+  color:var(--amber);background:rgba(194,117,10,.08);
+  border:1px solid rgba(194,117,10,.22);border-radius:4px;
+  padding:.25rem .6rem;
+}
+
+/* "Zuerst" strip */
+.zuerst{
+  display:flex;gap:1rem;align-items:flex-start;
+  background:rgba(194,117,10,.07);
+  border:1px solid rgba(194,117,10,.2);
+  border-left:4px solid var(--amber-2);
+  border-radius:8px;padding:1.1rem 1.3rem;margin-bottom:1.8rem;
+}
+.zuerst-bolt{font-size:1.3rem;line-height:1;animation:boltBlink 2.2s ease-in-out infinite}
+.zuerst-body{display:flex;flex-direction:column;gap:.25rem}
+.zuerst-tag{
+  font-family:var(--font-m);font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--amber);
+}
+.zuerst-txt{font-size:.875rem;color:var(--text);line-height:1.65}
+.zuerst-txt b{color:var(--amber)}
+@keyframes boltBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.9)}}
+
+/* tip cards (criteria style) */
+.criteria-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;
+}
+.criteria-item{
+  background:#fff;border:1px solid var(--cream-3);border-radius:8px;
+  padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.35rem;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  position:relative;overflow:hidden;
+}
+.criteria-item::before{
+  content:'';position:absolute;left:0;top:0;width:3px;height:100%;
+  background:var(--amber-2);
+  transform:scaleY(0);transform-origin:bottom;
+  transition:transform .3s ease;
+}
+.criteria-item:hover{
+  transform:translateY(-5px);
+  box-shadow:0 10px 32px rgba(194,117,10,.15);
+  border-color:rgba(194,117,10,.3);
+}
+.criteria-item:hover::before{transform:scaleY(1)}
+.criteria-num{
+  font-family:var(--font-m);font-size:.6rem;font-weight:700;
+  letter-spacing:.14em;color:var(--amber);
+}
+.criteria-name{
+  font-family:var(--font-d);font-size:1.15rem;font-weight:400;color:var(--text);line-height:1.3;
+}
+[data-lang="ua"] .criteria-name{
+  font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;
+}
+.criteria-desc{
+  font-family:var(--font-b);font-size:.855rem;color:var(--text-muted);
+  line-height:1.68;margin-top:.25rem;
+}
+.criteria-desc b{color:var(--text)}
+.criteria-desc .mini-link{color:var(--amber);text-decoration:none;font-weight:700}
+.criteria-desc .mini-link:hover{text-decoration:underline}
+/* stagger inside active panel */
+.tpanel.active .criteria-item{opacity:0;animation:fadeUp .5s ease forwards}
+.tpanel.active .criteria-item:nth-child(1){animation-delay:.12s}
+.tpanel.active .criteria-item:nth-child(2){animation-delay:.19s}
+.tpanel.active .criteria-item:nth-child(3){animation-delay:.26s}
+.tpanel.active .criteria-item:nth-child(4){animation-delay:.33s}
+.tpanel.active .criteria-item:nth-child(5){animation-delay:.40s}
+.tpanel.active .criteria-item:nth-child(6){animation-delay:.47s}
+
+/* ── BAUPLAN (letter skeleton) ── */
+.bauplan{margin-top:2.2rem}
+.bp-title{
+  display:flex;align-items:center;gap:.6rem;
+  font-family:var(--font-d);font-size:1.25rem;color:var(--text);margin-bottom:.4rem;
+}
+.bp-title .ua{font-family:'Playfair Display',serif;font-weight:700}
+.bp-intro{font-size:.83rem;color:var(--text-muted);line-height:1.65;margin-bottom:1.3rem;max-width:760px}
+.bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.brief-doc{
+  background:#fff;border:1px solid var(--cream-3);border-radius:10px;
+  padding:1.4rem 1.4rem 1.2rem;
+  box-shadow:0 2px 16px rgba(0,0,0,.06);
+  display:flex;flex-direction:column;gap:.65rem;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.brief-doc:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(194,117,10,.13)}
+.brief-doc-head{
+  display:flex;align-items:center;gap:.5rem;
+  font-family:var(--font-m);font-size:.66rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--amber);
+  border-bottom:2px solid var(--cream-3);padding-bottom:.6rem;margin-bottom:.3rem;
+}
+.brief-row{
+  border:1px dashed rgba(194,117,10,.35);border-radius:6px;
+  padding:.85rem .9rem .6rem;position:relative;
+  transition:border-color .25s ease,background .25s ease;
+}
+.brief-row:hover{border-color:var(--amber-2);background:rgba(194,117,10,.04)}
+.brief-tag{
+  position:absolute;top:-.55rem;left:.7rem;
+  background:#fff;padding:0 .4rem;
+  font-family:var(--font-m);font-size:.58rem;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--amber);
+}
+.brief-row:hover .brief-tag{color:var(--amber-2)}
+.brief-ex{font-size:.855rem;color:var(--text);line-height:1.6}
+.brief-ex i{color:var(--text-muted)}
+.brief-ex.right{text-align:right}
+.brief-note{
+  margin-top:.4rem;font-size:.74rem;color:var(--text-muted);line-height:1.6;
+  display:flex;gap:.45rem;align-items:flex-start;
+}
+.brief-note b{color:var(--amber)}
+
+/* ── REDEMITTEL ── */
+.redemittel{margin-top:2.2rem}
+.rm-title{
+  display:flex;align-items:center;gap:.6rem;
+  font-family:var(--font-d);font-size:1.25rem;color:var(--text);margin-bottom:.4rem;
+}
+.rm-title .ua{font-family:'Playfair Display',serif;font-weight:700}
+.rm-intro{font-size:.83rem;color:var(--text-muted);line-height:1.65;margin-bottom:1.3rem;max-width:760px}
+.rm-group{margin-bottom:2.4rem}
+.rm-group:last-child{margin-bottom:0}
+.rm-group-name{
+  font-family:var(--font-m);font-size:.62rem;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--amber);
+  margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;
+}
+.rm-group-name::after{content:'';flex:1;height:1px;background:var(--cream-3)}
+.rm-chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{
+  font-family:var(--font-m);font-size:.82rem;color:var(--text);
+  background:#fff;border:1px solid var(--cream-3);border-radius:5px;
+  padding:.45rem .75rem;line-height:1.45;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease,background .2s ease;
+  cursor:default;
+}
+.chip:hover{
+  transform:translateY(-3px);
+  border-color:var(--amber-2);
+  background:rgba(194,117,10,.06);
+  box-shadow:0 6px 18px rgba(194,117,10,.15);
+}
+.tpanel.active .rm-chips .chip{opacity:0;animation:fadeUp .4s ease forwards}
+.tpanel.active .rm-chips .chip:nth-child(1){animation-delay:.1s}
+.tpanel.active .rm-chips .chip:nth-child(2){animation-delay:.16s}
+.tpanel.active .rm-chips .chip:nth-child(3){animation-delay:.22s}
+.tpanel.active .rm-chips .chip:nth-child(4){animation-delay:.28s}
+.tpanel.active .rm-chips .chip:nth-child(5){animation-delay:.34s}
+.tpanel.active .rm-chips .chip:nth-child(6){animation-delay:.4s}
+
+/* ── NEXT-STEP CTA ── */
+.next-cta{
+  margin-top:2.4rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  background:var(--cream-2);border:1px solid var(--cream-3);border-radius:10px;
+  padding:1.2rem 1.4rem;
+}
+.next-cta-txt{font-size:.85rem;color:var(--text-muted);flex:1;min-width:220px;line-height:1.6}
+.next-cta a{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-family:var(--font-b);font-size:.74rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:#fff;background:var(--amber-2);border-radius:5px;
+  padding:.65rem 1.2rem;text-decoration:none;white-space:nowrap;
+  transition:background .25s ease,transform .2s ease,box-shadow .25s ease;
+}
+.next-cta a:hover{background:var(--amber);transform:translateY(-2px);box-shadow:0 8px 22px rgba(194,117,10,.3)}
+
+/* ── LANG CONTROL ── */
+[data-lang="ua"] .de{display:none!important}
+[data-lang="de"] .ua{display:none!important}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--text);border-top:1px solid rgba(255,255,255,.06);
+  padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;
+}
+.foot-logo{font-family:var(--font-d);font-size:1.25rem;color:#fff}
+.foot-logo span{color:var(--amber-light)}
+.foot-txt{font-family:var(--font-m);font-size:.68rem;color:rgba(255,255,255,.4);letter-spacing:.08em}
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ringPulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.85;transform:scale(1.25)}}
+@keyframes floatIcon{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.tips-layout{animation:fadeUp .6s .15s both}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .tips-layout{grid-template-columns:1fr;gap:1.6rem}
+  .ttabs{
+    position:static;flex-direction:row;overflow-x:auto;
+    border-top:none;gap:.5rem;padding-bottom:.4rem;
+    -webkit-overflow-scrolling:touch;
+  }
+  .ttab{
+    flex-shrink:0;border:1px solid var(--cream-3);border-radius:6px;
+    padding:.7rem .9rem;background:#fff;
+  }
+  .ttab:hover,.ttab.active{padding-left:.9rem}
+  .ttab::before{width:100%;height:3px;transform:scaleX(0);transform-origin:left}
+  .ttab:hover::before,.ttab.active::before{transform:scaleX(1)}
+  .ttab-sub,.ttab-arrow{display:none}
+  .ttab-name{font-size:.85rem}
+  .bp-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  header,header.scrolled{padding:.9rem 1.4rem}
+  nav{display:none}
+  .banner-content{padding:3.8rem 1.4rem .8rem}
+  .banner-headline{font-size:clamp(1.3rem,5.5vw,1.8rem)}
+  .tips-wrap{padding:3rem 1.4rem 4rem}
+  footer{flex-direction:column;gap:.8rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ════ HEADER ════ -->
+<header id="hdr">
+  <a class="logo" href="index.html">B1 D<span>Ex</span></a>
+  <nav>
+    <a href="index.html">
+      <span class="de">Startseite</span><span class="ua">Головна</span>
+    </a>
+    <a href="uebungen.html">
+      <span class="de">Übungen</span><span class="ua">Вправи</span>
+    </a>
+    <a href="pruefungsstruktur.html">
+      <span class="de">Prüfungsstruktur</span><span class="ua">Структура екзамену</span>
+    </a>
+    <a href="wichtige-tipps.html" class="current">
+      <span class="de">Wichtige Tipps</span><span class="ua">Важливі поради</span>
+    </a>
+    <a href="pruefungssimulation.html">
+      <span class="de">Prüfungssimulation</span><span class="ua">Симуляція</span>
+    </a>
+    <div class="lang-sw">
+      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" id="btn-ua" onclick="setLang('ua')">UA</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ════ BANNER (FIXED) ════ -->
+<div class="banner">
+  <div class="banner-bg" id="bbg"></div>
+  <div class="banner-overlay"></div>
+  <div class="banner-content">
+    <h1 class="banner-headline">
+      <span class="de">Wichtige Tipps — mehr Punkte mit der richtigen Strategie</span>
+      <span class="ua">Важливі поради — більше балів із правильною стратегією</span>
+    </h1>
+    <p class="banner-sub">
+      <span class="de">Kurz und konkret: die beste Strategie für jeden Prüfungsteil.</span>
+      <span class="ua">Коротко і конкретно: найкраща стратегія для кожної частини іспиту.</span>
+    </p>
+  </div>
+</div>
+
+<!-- ════ MAIN CONTENT ════ -->
+<main class="main">
+
+<!-- ════ TIPS ════ -->
+<div class="tips-wrap" id="tipps-start">
+  <div class="tips-layout">
+
+    <!-- ── TAB LIST ── -->
+    <div class="ttabs" role="tablist">
+
+      <button class="ttab active" data-key="allgemein" onclick="activateTab('allgemein')">
+        <span class="ttab-num">01</span>
+        <span class="ttab-main">
+          <span class="ttab-name"><span class="de">Allgemeine Tipps</span><span class="ua">Загальні поради</span></span>
+          <span class="ttab-sub"><span class="de">Strategie &amp; Prüfungstag</span><span class="ua">Стратегія і день іспиту</span></span>
+        </span>
+        <span class="ttab-arrow">→</span>
+      </button>
+
+      <button class="ttab" data-key="lesen" onclick="activateTab('lesen')">
+        <span class="ttab-num">02</span>
+        <span class="ttab-main">
+          <span class="ttab-name">Leseverstehen</span>
+          <span class="ttab-sub"><span class="de">Texte &amp; Anzeigen verstehen</span><span class="ua">Розуміння текстів і оголошень</span></span>
+        </span>
+        <span class="ttab-arrow">→</span>
+      </button>
+
+      <button class="ttab" data-key="sprachbausteine" onclick="activateTab('sprachbausteine')">
+        <span class="ttab-num">03</span>
+        <span class="ttab-main">
+          <span class="ttab-name">Sprachbausteine</span>
+          <span class="ttab-sub"><span class="de">Grammatik &amp; Lexik</span><span class="ua">Граматика і лексика</span></span>
+        </span>
+        <span class="ttab-arrow">→</span>
+      </button>
+
+      <button class="ttab" data-key="hoeren" onclick="activateTab('hoeren')">
+        <span class="ttab-num">04</span>
+        <span class="ttab-main">
+          <span class="ttab-name">Hörverstehen</span>
+          <span class="ttab-sub"><span class="de">Nur einmal hören!</span><span class="ua">Звучить лише один раз!</span></span>
+        </span>
+        <span class="ttab-arrow">→</span>
+      </button>
+
+      <button class="ttab" data-key="schreiben" onclick="activateTab('schreiben')">
+        <span class="ttab-num">05</span>
+        <span class="ttab-main">
+          <span class="ttab-name">Schriftlicher Ausdruck</span>
+          <span class="ttab-sub"><span class="de">E-Mail &amp; Brief</span><span class="ua">E-mail і паперовий лист</span></span>
+        </span>
+        <span class="ttab-arrow">→</span>
+      </button>
+
+      <button class="ttab" data-key="sprechen" onclick="activateTab('sprechen')">
+        <span class="ttab-num">06</span>
+        <span class="ttab-main">
+          <span class="ttab-name">Mündlicher Ausdruck</span>
+          <span class="ttab-sub"><span class="de">Sprechen ohne Angst</span><span class="ua">Говоріння без страху</span></span>
+        </span>
+        <span class="ttab-arrow">→</span>
+      </button>
+
+    </div>
+
+    <!-- ── PANELS ── -->
+    <div class="tpanels">
+
+      <!-- ════ PANEL 1 — ALLGEMEIN ════ -->
+      <div class="tpanel active" id="panel-allgemein">
+        <div class="tp-head stag">
+          <span class="tp-icon">🎯</span>
+          <div>
+            <div class="tp-title">
+              <span class="de">Allgemeine Tipps</span>
+              <span class="ua">Загальні поради</span>
+            </div>
+            <div class="tp-meta">
+              <span class="tp-chip">⏱ <span class="de">~3 Std. gesamt</span><span class="ua">~3 год загалом</span></span>
+              <span class="tp-chip">🏆 300 <span class="de">Pkt. max</span><span class="ua">балів макс.</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="zuerst stag">
+          <span class="zuerst-bolt">⚡</span>
+          <div class="zuerst-body">
+            <span class="zuerst-tag"><span class="de">Zuerst</span><span class="ua">Спочатку</span></span>
+            <p class="zuerst-txt">
+              <span class="de">Lade den offiziellen <b>Übungstest</b> herunter und mache ihn <b>einmal komplett</b> unter Echtzeit-Bedingungen — mit Timer und ohne Wörterbuch.</span>
+              <span class="ua">Завантаж офіційний <b>пробний тест</b> і пройди його <b>один раз повністю</b> в реальних умовах — з таймером і без словника.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="criteria-grid stag">
+          <div class="criteria-item">
+            <div class="criteria-num">01</div>
+            <div class="criteria-name"><span class="de">Keine Antwort = 0 Punkte</span><span class="ua">Немає відповіді = 0 балів</span></div>
+            <div class="criteria-desc">
+              <span class="de">Für Fehler gibt es <b>keinen Punktabzug</b>. Lass nie ein Feld leer — im Zweifel raten!</span>
+              <span class="ua">За помилки бали <b>не знімають</b>. Ніколи не залишай поле порожнім — сумніваєшся? Вгадуй!</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">02</div>
+            <div class="criteria-name"><span class="de">Antwortbogen S30</span><span class="ua">Бланк відповідей S30</span></div>
+            <div class="criteria-desc">
+              <span class="de">Nur der Antwortbogen wird bewertet! Plane <b>5–10 Min.</b> zum Übertragen der Antworten ein.</span>
+              <span class="ua">Оцінюється лише бланк відповідей! Залиш <b>5–10 хв</b> на перенесення відповідей.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">03</div>
+            <div class="criteria-name"><span class="de">Leichtes zuerst</span><span class="ua">Спочатку легке</span></div>
+            <div class="criteria-desc">
+              <span class="de">Beginne mit Aufgaben, die dir leichtfallen — das spart Zeit und beruhigt die Nerven.</span>
+              <span class="ua">Починай із завдань, які даються легко, — це економить час і заспокоює нерви.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">04</div>
+            <div class="criteria-name"><span class="de">Uhr mitnehmen</span><span class="ua">Візьми годинник</span></div>
+            <div class="criteria-desc">
+              <span class="de">Im Prüfungsraum hängt nicht immer eine Uhr. Eine einfache Armbanduhr hilft beim Zeitmanagement (Smartwatch ist verboten).</span>
+              <span class="ua">В аудиторії не завжди є годинник. Простий наручний годинник допоможе з таймінгом (смартгодинники заборонені).</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">05</div>
+            <div class="criteria-name"><span class="de">Anweisungen kennen</span><span class="ua">Знай інструкції</span></div>
+            <div class="criteria-desc">
+              <span class="de">Lerne die Aufgabenformate <b>vor</b> der Prüfung — dann musst du die Anweisungen nicht mehr lesen und gewinnst Minuten.</span>
+              <span class="ua">Вивчи формати завдань <b>до</b> іспиту — тоді не доведеться читати інструкції, і ти виграєш хвилини.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">06</div>
+            <div class="criteria-name"><span class="de">Am Prüfungstag</span><span class="ua">У день іспиту</span></div>
+            <div class="criteria-desc">
+              <span class="de">Ausweis nicht vergessen, früh da sein, Wasser mitnehmen. Am Abend davor: <b>schlafen statt lernen</b>.</span>
+              <span class="ua">Не забудь документ, приходь раніше, візьми воду. Увечері напередодні — <b>спати, а не вчити</b>.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="next-cta stag">
+          <p class="next-cta-txt">
+            <span class="de">Noch nicht sicher, wie die Prüfung aufgebaut ist? Schau dir zuerst die Struktur an.</span>
+            <span class="ua">Ще не впевнений(-а), як побудований іспит? Спочатку переглянь структуру.</span>
+          </p>
+          <a href="pruefungsstruktur.html"><span class="de">Prüfungsstruktur</span><span class="ua">Структура екзамену</span> →</a>
+          <a href="pruefungssimulation.html"><span class="de">Simulation starten</span><span class="ua">Почати симуляцію</span> →</a>
+        </div>
+      </div>
+
+      <!-- ════ PANEL 2 — LESEVERSTEHEN ════ -->
+      <div class="tpanel" id="panel-lesen">
+        <div class="tp-head stag">
+          <span class="tp-icon">📖</span>
+          <div>
+            <div class="tp-title">
+              <span class="de">Leseverstehen</span>
+              <span class="ua">Leseverstehen — читання</span>
+            </div>
+            <div class="tp-meta">
+              <span class="tp-chip">⏱ 90 Min. <span class="de">mit Sprachbausteinen</span><span class="ua">разом зі Sprachbausteine</span></span>
+              <span class="tp-chip">🏆 75 <span class="de">Pkt.</span><span class="ua">балів</span></span>
+              <span class="tp-chip">📋 3 Teile · 20 <span class="de">Aufgaben</span><span class="ua">завдань</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="zuerst stag">
+          <span class="zuerst-bolt">⚡</span>
+          <div class="zuerst-body">
+            <span class="zuerst-tag"><span class="de">Zuerst</span><span class="ua">Спочатку</span></span>
+            <p class="zuerst-txt">
+              <span class="de">Lies <b>zuerst die Aufgaben</b> und Überschriften — erst danach den Text. So weißt du genau, wonach du suchst.</span>
+              <span class="ua">Спочатку читай <b>завдання й заголовки</b> — і лише потім текст. Так ти точно знатимеш, що шукати.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="criteria-grid stag">
+          <div class="criteria-item">
+            <div class="criteria-num">TEIL 1</div>
+            <div class="criteria-name"><span class="de">Synonyme statt gleicher Wörter</span><span class="ua">Синоніми, а не ті самі слова</span></div>
+            <div class="criteria-desc">
+              <span class="de">Die richtige Überschrift <b>umschreibt</b> den Text. Identische Wörter im Text und in der Überschrift sind oft eine <b>Falle</b>.</span>
+              <span class="ua">Правильний заголовок <b>перефразовує</b> текст. Однакові слова в тексті й заголовку — часто <b>пастка</b>.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">TEIL 2</div>
+            <div class="criteria-name"><span class="de">Antwort im Text belegen</span><span class="ua">Підтверджуй відповідь текстом</span></div>
+            <div class="criteria-desc">
+              <span class="de">Wähle nur eine Antwort, die du <b>direkt im Text</b> findest. „Klingt logisch“ reicht nicht — das ist das Prinzip der Distraktoren.</span>
+              <span class="ua">Обирай лише відповідь, яку можна <b>знайти прямо в тексті</b>. «Звучить логічно» — недостатньо, на цьому будуються дистрактори.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">TEIL 3</div>
+            <div class="criteria-name"><span class="de">Schlüsselwörter markieren</span><span class="ua">Виділяй ключові слова</span></div>
+            <div class="criteria-desc">
+              <span class="de">Unterstreiche in jeder Situation: <b>Wer? Was? Wann?</b> Passt keine Anzeige — markiere <b>X</b>, das ist eine richtige Antwort! <b>X</b> kann — und wird höchstwahrscheinlich — mehrmals vorkommen.</span>
+              <span class="ua">Підкресли в кожній ситуації: <b>хто? що? коли?</b> Якщо жодне оголошення не підходить — познач <b>X</b>, це теж правильна відповідь! <b>X</b> може траплятися (і найімовірніше траплятиметься) кілька разів.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">04</div>
+            <div class="criteria-name"><span class="de">Unbekannte Wörter überspringen</span><span class="ua">Пропускай незнайомі слова</span></div>
+            <div class="criteria-desc">
+              <span class="de">Bleib nicht hängen — du musst <b>nicht jedes Wort</b> verstehen. Der Kontext erklärt meist genug, um die Aufgabe zu lösen.</span>
+              <span class="ua">Не зациклюйся — <b>не обов'язково</b> розуміти кожне слово. Контексту зазвичай достатньо, щоб розв'язати завдання.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">05</div>
+            <div class="criteria-name"><span class="de">Zeitplan 50 / 30 / 10</span><span class="ua">Таймінг 50 / 30 / 10</span></div>
+            <div class="criteria-desc">
+              <span class="de">Ca. <b>50 Min.</b> Lesen, <b>30 Min.</b> Sprachbausteine, <b>10 Min.</b> für den Antwortbogen — die Reihenfolge darfst du selbst wählen.</span>
+              <span class="ua">Бл. <b>50 хв</b> на читання, <b>30 хв</b> на Sprachbausteine, <b>10 хв</b> на бланк — порядок виконання можна обирати самостійно.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">06</div>
+            <div class="criteria-name"><span class="de">Täglich lesen</span><span class="ua">Читай щодня</span></div>
+            <div class="criteria-desc">
+              <span class="de">Zeitungsartikel, Blogs, Anzeigen — 15 Min. täglich. Übe, den <b>Hauptgedanken</b> in 30 Sekunden zu erfassen.</span>
+              <span class="ua">Статті, блоги, оголошення — 15 хв щодня. Тренуйся вловлювати <b>головну думку</b> за 30 секунд.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ PANEL 3 — SPRACHBAUSTEINE ════ -->
+      <div class="tpanel" id="panel-sprachbausteine">
+        <div class="tp-head stag">
+          <span class="tp-icon">🧩</span>
+          <div>
+            <div class="tp-title">
+              <span class="de">Sprachbausteine</span>
+              <span class="ua">Sprachbausteine — мовні конструкції</span>
+            </div>
+            <div class="tp-meta">
+              <span class="tp-chip">⏱ ~30 Min. <span class="de">empfohlen</span><span class="ua">рекомендовано</span></span>
+              <span class="tp-chip">🏆 30 <span class="de">Pkt.</span><span class="ua">балів</span></span>
+              <span class="tp-chip">📋 2 Teile · 20 <span class="de">Aufgaben</span><span class="ua">завдань</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="zuerst stag">
+          <span class="zuerst-bolt">⚡</span>
+          <div class="zuerst-body">
+            <span class="zuerst-tag"><span class="de">Zuerst</span><span class="ua">Спочатку</span></span>
+            <p class="zuerst-txt">
+              <span class="de">Lies den <b>ganzen Text einmal durch</b>, bevor du die Lücken füllst — der Kontext entscheidet über die richtige Antwort.</span>
+              <span class="ua">Прочитай <b>увесь текст один раз</b>, перш ніж заповнювати пропуски — правильну відповідь визначає контекст.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="criteria-grid stag">
+          <div class="criteria-item">
+            <div class="criteria-num">01</div>
+            <div class="criteria-name"><span class="de">Vor und nach der Lücke</span><span class="ua">До і після пропуску</span></div>
+            <div class="criteria-desc">
+              <span class="de">Entscheidend ist oft das Wort <b>direkt vor oder nach</b> der Lücke: Verb, Präposition oder Artikel verraten die Lösung.</span>
+              <span class="ua">Вирішальним часто є слово <b>одразу до або після</b> пропуску: дієслово, прийменник чи артикль підказують відповідь.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">02</div>
+            <div class="criteria-name"><span class="de">Konnektoren beherrschen</span><span class="ua">Опануй сполучники</span></div>
+            <div class="criteria-desc">
+              <span class="de"><b>weil, obwohl, deshalb, trotzdem, denn, wenn</b> — lerne die Bedeutung <b>und</b> die Wortstellung danach.</span>
+              <span class="ua"><b>weil, obwohl, deshalb, trotzdem, denn, wenn</b> — вивчи значення <b>і</b> порядок слів після кожного.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">03</div>
+            <div class="criteria-name"><span class="de">Verben mit Präpositionen</span><span class="ua">Дієслова з прийменниками</span></div>
+            <div class="criteria-desc">
+              <span class="de"><b>warten auf, sich freuen über/auf, denken an, träumen von</b> — feste Verbindungen auswendig lernen, sie kommen jedes Jahr vor.</span>
+              <span class="ua"><b>warten auf, sich freuen über/auf, denken an, träumen von</b> — вчи стійкі сполучення напам'ять, вони трапляються щороку.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">04</div>
+            <div class="criteria-name"><span class="de">Teil 2: Streichen hilft</span><span class="ua">Частина 2: викреслюй</span></div>
+            <div class="criteria-desc">
+              <span class="de"><b>15 Wörter</b> für <b>10 Lücken</b>. Streiche jedes benutzte Wort durch — am Ende bleiben 5 übrig, und du behältst den Überblick.</span>
+              <span class="ua"><b>15 слів</b> на <b>10 пропусків</b>. Викреслюй кожне використане слово — наприкінці залишиться 5, і ти не заплутаєшся.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">05</div>
+            <div class="criteria-name"><span class="de">Ausschlussverfahren</span><span class="ua">Метод виключення</span></div>
+            <div class="criteria-desc">
+              <span class="de">Fülle zuerst die <b>sicheren</b> Lücken. Bei den restlichen vergleichst du nur noch wenige Optionen — die Trefferquote steigt.</span>
+              <span class="ua">Спершу заповни <b>впевнені</b> пропуски. Для решти залишиться менше варіантів — шанс вгадати зростає.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">06</div>
+            <div class="criteria-name"><span class="de">Nicht grübeln</span><span class="ua">Не залипай</span></div>
+            <div class="criteria-desc">
+              <span class="de">Max. <b>1 Minute</b> pro Lücke. Markiere die Stelle, geh weiter und komm am Ende zurück — jede Aufgabe zählt gleich viel.</span>
+              <span class="ua">Максимум <b>1 хвилина</b> на пропуск. Познач місце, йди далі й повернися наприкінці — усі завдання коштують однаково.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ PANEL 4 — HÖRVERSTEHEN ════ -->
+      <div class="tpanel" id="panel-hoeren">
+        <div class="tp-head stag">
+          <span class="tp-icon">🎧</span>
+          <div>
+            <div class="tp-title">
+              <span class="de">Hörverstehen</span>
+              <span class="ua">Hörverstehen — аудіювання</span>
+            </div>
+            <div class="tp-meta">
+              <span class="tp-chip">⏱ ca. 30 Min.</span>
+              <span class="tp-chip">🏆 75 <span class="de">Pkt.</span><span class="ua">балів</span></span>
+              <span class="tp-chip">📋 3 Teile · 20 <span class="de">Aufgaben</span><span class="ua">завдань</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="zuerst stag">
+          <span class="zuerst-bolt">⚡</span>
+          <div class="zuerst-body">
+            <span class="zuerst-tag"><span class="de">Zuerst</span><span class="ua">Спочатку</span></span>
+            <p class="zuerst-txt">
+              <span class="de">Nutze <b>jede Pause</b>, um die nächsten Aufgaben zu lesen und Schlüsselwörter zu unterstreichen — beim Hören bleibt dafür keine Zeit.</span>
+              <span class="ua">Використовуй <b>кожну паузу</b>, щоб прочитати наступні завдання й підкреслити ключові слова — під час звучання на це не буде часу.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="criteria-grid stag">
+          <div class="criteria-item">
+            <div class="criteria-num">01</div>
+            <div class="criteria-name"><span class="de">Alles nur EINMAL</span><span class="ua">Все лише ОДИН раз</span></div>
+            <div class="criteria-desc">
+              <span class="de">Jeder Text wird <b>nur einmal</b> gespielt. Volle Konzentration ab der ersten Sekunde — kein Handy-Gedanke, kein Zurückblättern.</span>
+              <span class="ua">Кожен запис звучить <b>лише один раз</b>. Повна концентрація з першої секунди — жодних сторонніх думок.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">02</div>
+            <div class="criteria-name"><span class="de">Sofort ankreuzen</span><span class="ua">Відповідай одразу</span></div>
+            <div class="criteria-desc">
+              <span class="de"><b>Richtig oder falsch</b> — entscheide sofort beim Hören, nicht erst am Ende. Das Gedächtnis trügt nach 3 Aufgaben.</span>
+              <span class="ua"><b>Richtig чи falsch</b> — вирішуй одразу під час прослуховування, а не наприкінці. Після 3 завдань пам'ять уже підводить.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">03</div>
+            <div class="criteria-name"><span class="de">Verpasst? Loslassen!</span><span class="ua">Пропустив? Відпусти!</span></div>
+            <div class="criteria-desc">
+              <span class="de">Eine verpasste Aufgabe kostet 2,5–5 Punkte. <b>Panik kostet alle weiteren.</b> Kreuze irgendetwas an und hör weiter.</span>
+              <span class="ua">Пропущене завдання — це 2,5–5 балів. <b>Паніка коштує всіх наступних.</b> Познач будь-що і слухай далі.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">04</div>
+            <div class="criteria-name"><span class="de">Umformulierungen erwarten</span><span class="ua">Очікуй перефразувань</span></div>
+            <div class="criteria-desc">
+              <span class="de">Die Aufgabe benutzt <b>andere Wörter</b> als der Hörtext. Achte auf den Sinn — gleiche Wörter sind oft ein Distraktor.</span>
+              <span class="ua">У завданні — <b>інші слова</b>, ніж у записі. Зважай на зміст: однакові слова часто є дистрактором.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">05</div>
+            <div class="criteria-name"><span class="de">Wer spricht? Wo?</span><span class="ua">Хто говорить? Де?</span></div>
+            <div class="criteria-desc">
+              <span class="de">Achte in Teil 1 und 3 zuerst auf die <b>Situation</b>: Anrufbeantworter, Durchsage, Radio? Das hilft, die Aussage einzuordnen.</span>
+              <span class="ua">У частинах 1 і 3 спочатку зрозумій <b>ситуацію</b>: автовідповідач, оголошення, радіо? Це допомагає оцінити твердження.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">06</div>
+            <div class="criteria-name"><span class="de">Ohren täglich trainieren</span><span class="ua">Тренуй слух щодня</span></div>
+            <div class="criteria-desc">
+              <span class="de">„Langsam gesprochene Nachrichten“ (DW), Podcasts auf B1-Niveau — <b>15 Minuten täglich</b> reichen für sichtbaren Fortschritt.</span>
+              <span class="ua">«Langsam gesprochene Nachrichten» (DW), подкасти рівня B1 — <b>15 хвилин щодня</b> дають помітний прогрес.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ PANEL 5 — SCHREIBEN ════ -->
+      <div class="tpanel" id="panel-schreiben">
+        <div class="tp-head stag">
+          <span class="tp-icon">✍️</span>
+          <div>
+            <div class="tp-title">
+              <span class="de">Schriftlicher Ausdruck</span>
+              <span class="ua">Schriftlicher Ausdruck — письмо</span>
+            </div>
+            <div class="tp-meta">
+              <span class="tp-chip">⏱ 30 Min.</span>
+              <span class="tp-chip">🏆 45 <span class="de">Pkt.</span><span class="ua">балів</span></span>
+              <span class="tp-chip">📋 1 <span class="de">E-Mail · 4 Leitpunkte</span><span class="ua">e-mail · 4 пункти</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="zuerst stag">
+          <span class="zuerst-bolt">⚡</span>
+          <div class="zuerst-body">
+            <span class="zuerst-tag"><span class="de">Zuerst</span><span class="ua">Спочатку</span></span>
+            <p class="zuerst-txt">
+              <span class="de">Markiere die <b>4 Leitpunkte</b> in der Aufgabe und plane 2 Minuten: Wer bekommt den Brief — <b>Sie oder du</b>? Erst dann schreiben.</span>
+              <span class="ua">Виділи <b>4 опорні пункти</b> в завданні та витрать 2 хвилини на план: кому пишеш — <b>Sie чи du</b>? І лише потім пиши.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="criteria-grid stag">
+          <div class="criteria-item">
+            <div class="criteria-num">01</div>
+            <div class="criteria-name"><span class="de">Alle 4 Leitpunkte</span><span class="ua">Усі 4 пункти</span></div>
+            <div class="criteria-desc">
+              <span class="de">Jeder fehlende Leitpunkt kostet massiv Punkte. Schreibe zu jedem Punkt <b>1–2 Sätze</b> und hake ihn in der Aufgabe ab.</span>
+              <span class="ua">Кожен пропущений пункт сильно знижує бал. Пиши на кожен пункт <b>1–2 речення</b> і відмічай його в завданні галочкою.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">02</div>
+            <div class="criteria-name"><span class="de">Formell oder informell?</span><span class="ua">Формально чи ні?</span></div>
+            <div class="criteria-desc">
+              <span class="de">Steht <b>„Sie“</b> in der Aufgabe → durchgehend formell. <b>„Du“</b> → informell. Niemals mischen — das ist ein typischer Fehler!</span>
+              <span class="ua">У завданні <b>«Sie»</b> → пиши формально до кінця. <b>«Du»</b> → неформально. Ніколи не змішуй — це типова помилка!</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">03</div>
+            <div class="criteria-name"><span class="de">Nach der Anrede: klein!</span><span class="ua">Після звертання — мала літера!</span></div>
+            <div class="criteria-desc">
+              <span class="de">„Liebe Anna, <b>ich</b> habe…“ — nach dem Komma geht es <b>kleingeschrieben</b> weiter (außer Nomen und „Sie“).</span>
+              <span class="ua">„Liebe Anna, <b>ich</b> habe…“ — після коми речення продовжується з <b>малої літери</b> (крім іменників і «Sie»).</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">04</div>
+            <div class="criteria-name"><span class="de">Konnektoren einbauen</span><span class="ua">Додай сполучники</span></div>
+            <div class="criteria-desc">
+              <span class="de"><b>weil, deshalb, außerdem, trotzdem, danach</b> — mindestens 3–4 Konnektoren machen den Text flüssig und bringen Stilpunkte.</span>
+              <span class="ua"><b>weil, deshalb, außerdem, trotzdem, danach</b> — щонайменше 3–4 сполучники роблять текст зв'язним і додають балів за стиль.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">05</div>
+            <div class="criteria-name"><span class="de">5 Min. Endkontrolle</span><span class="ua">5 хв на перевірку</span></div>
+            <div class="criteria-desc">
+              <span class="de">Drei Checks retten Punkte: <b>Verb an Position 2</b>? <b>Nomen großgeschrieben</b>? <b>Komma vor weil/dass</b>?</span>
+              <span class="ua">Три перевірки рятують бали: <b>дієслово на 2-му місці</b>? <b>іменники з великої</b>? <b>кома перед weil/dass</b>?</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">06</div>
+            <div class="criteria-name"><span class="de">Ca. 80–100 Wörter</span><span class="ua">Бл. 80–100 слів</span></div>
+            <div class="criteria-desc">
+              <span class="de">Qualität vor Quantität: lieber <b>kurz und korrekt</b> als lang und fehlerhaft. Alle 4 Punkte + Struktur = volle Punktzahl.</span>
+              <span class="ua">Якість важливіша за обсяг: краще <b>коротко і правильно</b>, ніж довго і з помилками. 4 пункти + структура = максимум балів.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── BAUPLAN ── -->
+        <div class="bauplan stag">
+          <div class="bp-title">
+            🧱
+            <span class="de">Bauplan: E-Mail &amp; Brief</span>
+            <span class="ua">Структура: e-mail і паперовий лист</span>
+          </div>
+          <p class="bp-intro">
+            <span class="de">Lerne dieses Gerüst auswendig — es funktioniert für jedes Thema. Fahre mit der Maus über die Bausteine.</span>
+            <span class="ua">Вивчи цей каркас напам'ять — він працює для будь-якої теми. Наведи курсор на блоки.</span>
+          </p>
+          <div class="bp-grid">
+
+            <!-- E-MAIL -->
+            <div class="brief-doc">
+              <div class="brief-doc-head">📧 E-Mail</div>
+              <div class="brief-row">
+                <span class="brief-tag">Betreff <span class="ua">/ тема</span></span>
+                <p class="brief-ex"><i>Anfrage: Sprachkurs im August</i></p>
+              </div>
+              <div class="brief-row">
+                <span class="brief-tag">Anrede <span class="ua">/ звертання</span></span>
+                <p class="brief-ex">Sehr geehrte Damen und Herren, / Liebe Anna,</p>
+              </div>
+              <div class="brief-row">
+                <span class="brief-tag">Einleitung <span class="ua">/ вступ</span></span>
+                <p class="brief-ex">ich habe Ihre Anzeige gelesen und … <i>(<span class="de">warum schreibst du?</span><span class="ua">чому ти пишеш?</span>)</i></p>
+              </div>
+              <div class="brief-row">
+                <span class="brief-tag">Hauptteil <span class="ua">/ основа</span></span>
+                <p class="brief-ex"><b><span class="de">Alle 4 Leitpunkte</span><span class="ua">Усі 4 пункти</span></b> <i>(<span class="de">mit Konnektoren verbinden</span><span class="ua">з'єднані сполучниками</span>)</i></p>
+              </div>
+              <div class="brief-row">
+                <span class="brief-tag">Schluss <span class="ua">/ кінцівка</span></span>
+                <p class="brief-ex">Ich freue mich auf Ihre Antwort.</p>
+              </div>
+              <div class="brief-row">
+                <span class="brief-tag">Gruß + Name <span class="ua">/ підпис</span></span>
+                <p class="brief-ex">Mit freundlichen Grüßen<br>Olena Schewtschenko</p>
+              </div>
+            </div>
+
+            <!-- BRIEF -->
+            <div class="brief-doc">
+              <div class="brief-doc-head">✉️ Brief (<span class="de">auf Papier</span><span class="ua">паперовий</span>)</div>
+              <div class="brief-row">
+                <span class="brief-tag">Ort &amp; Datum <span class="ua">/ місце і дата</span></span>
+                <p class="brief-ex right">Berlin, den 12. Juni 2026</p>
+              </div>
+              <div class="brief-row">
+                <span class="brief-tag">Anrede <span class="ua">/ звертання</span></span>
+                <p class="brief-ex">Sehr geehrter Herr Weber, / Lieber Tom,</p>
+              </div>
+              <div class="brief-row">
+                <span class="brief-tag">Einleitung <span class="ua">/ вступ</span></span>
+                <p class="brief-ex">vielen Dank für deinen Brief! <i>(<span class="de">klein weiterschreiben!</span><span class="ua">з малої літери!</span>)</i></p>
+              </div>
+              <div class="brief-row">
+                <span class="brief-tag">Hauptteil <span class="ua">/ основа</span></span>
+                <p class="brief-ex"><b><span class="de">Alle 4 Leitpunkte</span><span class="ua">Усі 4 пункти</span></b> <i>(<span class="de">je 1–2 Sätze</span><span class="ua">по 1–2 речення</span>)</i></p>
+              </div>
+              <div class="brief-row">
+                <span class="brief-tag">Schluss <span class="ua">/ кінцівка</span></span>
+                <p class="brief-ex">Ich hoffe, bald von dir zu hören.</p>
+              </div>
+              <div class="brief-row">
+                <span class="brief-tag">Gruß + Unterschrift <span class="ua">/ підпис</span></span>
+                <p class="brief-ex">Viele Grüße<br>deine Olena</p>
+              </div>
+            </div>
+
+          </div>
+          <p class="brief-note">
+            💡
+            <span class="de"><b>Unterschied:</b> Der Brief hat <b>Ort &amp; Datum</b> rechts oben, die E-Mail stattdessen einen <b>Betreff</b>. Alles andere ist identisch.</span>
+            <span class="ua"><b>Різниця:</b> у паперовому листі — <b>місце й дата</b> праворуч угорі, в e-mail замість цього — <b>тема (Betreff)</b>. Решта ідентична.</span>
+          </p>
+        </div>
+
+        <!-- ── REDEMITTEL ── -->
+        <div class="redemittel stag">
+          <div class="rm-title">
+            💬
+            <span class="de">Redemittel für den Brief</span>
+            <span class="ua">Стійкі фрази для листа</span>
+          </div>
+          <p class="rm-intro">
+            <span class="de">Diese Bausteine kannst du in fast jedem Brief verwenden — auswendig lernen und Zeit sparen.</span>
+            <span class="ua">Ці фрази підходять майже для будь-якого листа — вивчи напам'ять і заощаджуй час на іспиті.</span>
+          </p>
+
+          <div class="rm-group">
+            <div class="rm-group-name"><span class="de">Formell — Anrede &amp; Gruß</span><span class="ua">Формально — звертання і прощання</span></div>
+            <div class="rm-chips">
+              <span class="chip">Sehr geehrte Damen und Herren,</span>
+              <span class="chip">Sehr geehrte Frau Weber,</span>
+              <span class="chip">Sehr geehrter Herr Schmidt,</span>
+              <span class="chip">Mit freundlichen Grüßen</span>
+            </div>
+          </div>
+
+          <div class="rm-group">
+            <div class="rm-group-name"><span class="de">Informell — Anrede &amp; Gruß</span><span class="ua">Неформально — звертання і прощання</span></div>
+            <div class="rm-chips">
+              <span class="chip">Liebe Anna, / Lieber Tom,</span>
+              <span class="chip">Hallo Maria,</span>
+              <span class="chip">Viele Grüße</span>
+              <span class="chip">Liebe Grüße</span>
+            </div>
+          </div>
+
+          <div class="rm-group">
+            <div class="rm-group-name"><span class="de">Einleitung</span><span class="ua">Вступ</span></div>
+            <div class="rm-chips">
+              <span class="chip">vielen Dank für Ihre E-Mail.</span>
+              <span class="chip">ich habe Ihre Anzeige gelesen.</span>
+              <span class="chip">ich schreibe Ihnen, weil …</span>
+              <span class="chip">wie geht es dir? Ich habe mich über deine E-Mail sehr gefreut.</span>
+            </div>
+          </div>
+
+          <div class="rm-group">
+            <div class="rm-group-name"><span class="de">Hauptteil — fragen &amp; vorschlagen</span><span class="ua">Основна частина — питати і пропонувати</span></div>
+            <div class="rm-chips">
+              <span class="chip">Ich möchte gern wissen, ob …</span>
+              <span class="chip">Könnten Sie mir bitte mitteilen, wann …?</span>
+              <span class="chip">Ich schlage vor, dass wir …</span>
+              <span class="chip">Leider kann ich nicht kommen, weil …</span>
+            </div>
+          </div>
+
+          <div class="rm-group">
+            <div class="rm-group-name"><span class="de">Schluss</span><span class="ua">Кінцівка</span></div>
+            <div class="rm-chips">
+              <span class="chip">Ich freue mich auf Ihre Antwort.</span>
+              <span class="chip">Vielen Dank im Voraus.</span>
+              <span class="chip">Ich hoffe, bald von dir zu hören.</span>
+              <span class="chip">Melde dich bald!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ PANEL 6 — SPRECHEN ════ -->
+      <div class="tpanel" id="panel-sprechen">
+        <div class="tp-head stag">
+          <span class="tp-icon">🗣️</span>
+          <div>
+            <div class="tp-title">
+              <span class="de">Mündlicher Ausdruck</span>
+              <span class="ua">Mündlicher Ausdruck — говоріння</span>
+            </div>
+            <div class="tp-meta">
+              <span class="tp-chip">⏱ ca. 15 Min. + 20 Min. <span class="de">Vorbereitung</span><span class="ua">підготовка</span></span>
+              <span class="tp-chip">🏆 75 <span class="de">Pkt.</span><span class="ua">балів</span></span>
+              <span class="tp-chip">📋 3 Teile · <span class="de">zu zweit</span><span class="ua">у парі</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="zuerst stag">
+          <span class="zuerst-bolt">⚡</span>
+          <div class="zuerst-body">
+            <span class="zuerst-tag"><span class="de">Zuerst</span><span class="ua">Спочатку</span></span>
+            <p class="zuerst-txt">
+              <span class="de">Nutze die <b>20 Min. Vorbereitung</b>: Notiere <b>Stichwörter, keine ganzen Sätze</b> — abgelesene Sprache wirkt unnatürlich und kostet Punkte.</span>
+              <span class="ua">Використай <b>20 хв підготовки</b>: записуй <b>ключові слова, а не цілі речення</b> — зачитане з листка звучить неприродно і коштує балів.</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="criteria-grid stag">
+          <div class="criteria-item">
+            <div class="criteria-num">TEIL 1</div>
+            <div class="criteria-name"><span class="de">Vorbereitet glänzen</span><span class="ua">Підготуйся заздалегідь</span></div>
+            <div class="criteria-desc">
+              <span class="de"><b>Name, Herkunft, Wohnort, Beruf, Familie, Hobbys</b> — die Vorstellung kannst du zu 100 % vorher üben. Stelle auch Rückfragen!</span>
+              <span class="ua"><b>Ім'я, походження, місто, робота, сім'я, хобі</b> — самопрезентацію можна відпрацювати на 100 % заздалегідь. І став зустрічні питання!</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">TEIL 2</div>
+            <div class="criteria-name"><span class="de">Meinung + Nachfrage</span><span class="ua">Думка + питання</span></div>
+            <div class="criteria-desc">
+              <span class="de">Sag deine Meinung und gib das Wort weiter: <b>„Und was denkst du darüber?“</b> — ein echter Dialog bringt mehr Punkte als ein Monolog.</span>
+              <span class="ua">Вислови думку і передай слово: <b>„Und was denkst du darüber?“</b> — справжній діалог дає більше балів, ніж монолог.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">TEIL 3</div>
+            <div class="criteria-name"><span class="de">Vorschlagen &amp; reagieren</span><span class="ua">Пропонуй і реагуй</span></div>
+            <div class="criteria-desc">
+              <span class="de">Mache Vorschläge, reagiere auf deinen Partner und findet <b>gemeinsam</b> eine Lösung — die Planung ist Teamarbeit, kein Wettbewerb.</span>
+              <span class="ua">Роби пропозиції, реагуй на партнера і знайдіть рішення <b>разом</b> — планування є командною роботою, а не змаганням.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">04</div>
+            <div class="criteria-name"><span class="de">Schweigen ist der einzige Fehler</span><span class="ua">Мовчання — єдина помилка</span></div>
+            <div class="criteria-desc">
+              <span class="de">Nicht verstanden? Frag nach: <b>„Können Sie das bitte wiederholen?“</b> — auch das ist Kommunikation auf B1-Niveau.</span>
+              <span class="ua">Не зрозумів(-ла)? Перепитай: <b>„Können Sie das bitte wiederholen?“</b> — це теж комунікація рівня B1.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">05</div>
+            <div class="criteria-name"><span class="de">Fehler sind erlaubt</span><span class="ua">Помилки дозволені</span></div>
+            <div class="criteria-desc">
+              <span class="de"><b>Flüssigkeit und Verständlichkeit</b> zählen mehr als perfekte Grammatik — siehe die <a class="mini-link" href="pruefungsstruktur.html#punkte">4 Bewertungskriterien</a>.</span>
+              <span class="ua"><b>Вільність і зрозумілість</b> важливіші за ідеальну граматику — дивись <a class="mini-link" href="pruefungsstruktur.html#punkte">4 критерії оцінювання</a>.</span>
+            </div>
+          </div>
+          <div class="criteria-item">
+            <div class="criteria-num">06</div>
+            <div class="criteria-name"><span class="de">Mit Partner üben</span><span class="ua">Тренуйся з партнером</span></div>
+            <div class="criteria-desc">
+              <span class="de">Übe alle 3 Teile laut und zu zweit — Tandempartner, Freund(in) oder vor dem Spiegel mit Timer. <b>Sprechen lernt man nur sprechend.</b></span>
+              <span class="ua">Відпрацюй усі 3 частини вголос і в парі — з партнером, другом чи перед дзеркалом із таймером. <b>Говорити вчишся лише говорячи.</b></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── REDEMITTEL ── -->
+        <div class="redemittel stag">
+          <div class="rm-title">
+            💬
+            <span class="de">Redemittel fürs Gespräch</span>
+            <span class="ua">Стійкі фрази для розмови</span>
+          </div>
+          <p class="rm-intro">
+            <span class="de">Vier Situationen, die in jeder mündlichen Prüfung vorkommen — mit fertigen Sätzen bist du nie sprachlos.</span>
+            <span class="ua">Чотири ситуації, які трапляються на кожному усному іспиті — з готовими фразами ти ніколи не розгубишся.</span>
+          </p>
+
+          <div class="rm-group">
+            <div class="rm-group-name"><span class="de">Meinung sagen</span><span class="ua">Висловити думку</span></div>
+            <div class="rm-chips">
+              <span class="chip">Ich bin der Meinung, dass …</span>
+              <span class="chip">Ich finde, dass …</span>
+              <span class="chip">Meiner Meinung nach …</span>
+              <span class="chip">Für mich ist wichtig, dass …</span>
+            </div>
+          </div>
+
+          <div class="rm-group">
+            <div class="rm-group-name"><span class="de">Zustimmen &amp; widersprechen</span><span class="ua">Погодитись і заперечити</span></div>
+            <div class="rm-chips">
+              <span class="chip">Da hast du recht.</span>
+              <span class="chip">Einverstanden!</span>
+              <span class="chip">Das stimmt, aber …</span>
+              <span class="chip">Ich sehe das anders, weil …</span>
+            </div>
+          </div>
+
+          <div class="rm-group">
+            <div class="rm-group-name"><span class="de">Vorschläge machen (Teil 3)</span><span class="ua">Пропонувати (частина 3)</span></div>
+            <div class="rm-chips">
+              <span class="chip">Wir könnten …</span>
+              <span class="chip">Wie wäre es, wenn …?</span>
+              <span class="chip">Ich schlage vor, dass …</span>
+              <span class="chip">Hast du Lust, … zu …?</span>
+            </div>
+          </div>
+
+          <div class="rm-group">
+            <div class="rm-group-name"><span class="de">Nachfragen &amp; weitergeben</span><span class="ua">Перепитати і передати слово</span></div>
+            <div class="rm-chips">
+              <span class="chip">Können Sie das bitte wiederholen?</span>
+              <span class="chip">Was meinst du damit?</span>
+              <span class="chip">Und was denkst du?</span>
+              <span class="chip">Wie sehen Sie das?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tpanels -->
+  </div><!-- /tips-layout -->
+</div><!-- /tips-wrap -->
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="foot-logo">B1 D<span>Ex</span></div>
+  <p class="foot-txt">
+    <span class="de">© 2025 B1 DEx · Alle Rechte vorbehalten</span>
+    <span class="ua">© 2025 B1 DEx · Усі права захищені</span>
+  </p>
+</footer>
+
+</main>
+
+<script>
+// ── Language switcher ──
+function setLang(l) {
+  document.documentElement.setAttribute('data-lang', l);
+  document.getElementById('btn-de').classList.toggle('active', l === 'de');
+  document.getElementById('btn-ua').classList.toggle('active', l === 'ua');
+}
+
+// ── Header scroll ──
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ── Parallax on banner bg ──
+const bbg = document.getElementById('bbg');
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  if (s < window.innerHeight) {
+    bbg.style.transform = `scale(1.06) translateY(${s * 0.28}px)`;
+  }
+}, { passive: true });
+
+// ── Tabs ──
+const TAB_KEYS = ['allgemein', 'lesen', 'sprachbausteine', 'hoeren', 'schreiben', 'sprechen'];
+
+function activateTab(key, updateHash = true) {
+  if (!TAB_KEYS.includes(key)) return;
+  document.querySelectorAll('.ttab').forEach(t =>
+    t.classList.toggle('active', t.dataset.key === key));
+  document.querySelectorAll('.tpanel').forEach(p =>
+    p.classList.toggle('active', p.id === 'panel-' + key));
+  if (updateHash) history.replaceState(null, '', '#' + key);
+}
+
+// ── Stagger delays for top-level panel blocks ──
+document.querySelectorAll('.tpanel').forEach(panel => {
+  panel.querySelectorAll('.stag').forEach((el, i) => {
+    el.style.animationDelay = (i * 90) + 'ms';
+  });
+});
+
+// ── Deep links: wichtige-tipps.html#schreiben etc. ──
+function applyHash(scroll) {
+  const key = location.hash.replace('#', '');
+  if (TAB_KEYS.includes(key)) {
+    activateTab(key, false);
+    if (scroll) document.getElementById('tipps-start').scrollIntoView({ behavior: 'instant' });
+  }
+}
+applyHash(true);
+hdr.classList.toggle('scrolled', window.scrollY > 60);
+window.addEventListener('hashchange', () => applyHash(false));
+</script>
+</body>
+</html>
